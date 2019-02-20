@@ -1,0 +1,7 @@
+specFileName: ./spec/openapi.yaml
+apiTitle: SFG Beer Works Brewery API
+splitSpec: false
+codeSamples: false
+swaggerUI: true
+travis: false
+oasVersion: 3.0.2
