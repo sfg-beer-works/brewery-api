@@ -391,7 +391,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/BeerOrderPage"
+                    "$ref": "#/components/schemas/BeerOrder"
                   }
                 }
               }

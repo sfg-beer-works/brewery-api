@@ -229,7 +229,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BeerOrderPage'
+                  $ref: '#/components/schemas/BeerOrder'
         '404':
           description: Customer Id or Order Id Not Found
   '/api/v1/customers/{customerId}/orders/{orderId}/pickup':
