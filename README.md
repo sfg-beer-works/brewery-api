@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/sfg-beer-works/brewery-api.svg?style=svg)](https://circleci.com/gh/sfg-beer-works/brewery-api)
+
 # SFG Beer Works Brewery API OpenAPI Specification
 
 
