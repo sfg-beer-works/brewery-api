@@ -363,6 +363,8 @@ components:
         customerId:
           type: string
           format: uuid
+        customerRef:
+          type: string
         beerOrderLines:
           type: array
           items:
@@ -481,6 +483,8 @@ components:
         orderId:
           type: string
           format: uuid
+        customerRef:
+          type: string
         orderStatus:
           $ref: '#/components/schemas/OrderStatusEnum'
   requestBodies:
