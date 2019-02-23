@@ -382,6 +382,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BeerOrder'
+      additionalProperties: false
     BeerOrderLine:
       type: object
       allOf:
