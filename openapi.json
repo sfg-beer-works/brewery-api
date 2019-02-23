@@ -593,7 +593,8 @@
             "format": "uuid"
           },
           "customerRef": {
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "beerOrderLines": {
             "type": "array",
@@ -810,6 +811,7 @@
       },
       "OrderStatusEnum": {
         "type": "string",
+        "nullable": true,
         "enum": [
           "NEW",
           "READY",
