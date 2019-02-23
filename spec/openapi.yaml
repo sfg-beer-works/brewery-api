@@ -479,12 +479,21 @@ components:
                 numberOfElements:
                     type: integer
                     format: int32
+                totalElements:
+                    type: integer
+                    format: int32    
                 totalPages:
                     type: integer
                     format: int32
                 size:
                     type: integer
-                    format: int32                
+                    format: int32  
+                sort:
+                    type: string  
+                first:
+                    type: boolean
+                last:
+                    type: boolean                        
         OrderStatusEnum:
             type: string
             enum:
