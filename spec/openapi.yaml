@@ -396,8 +396,7 @@ components:
                 content:
                     type: array
                     items:
-                        $ref: "#/components/schemas/BeerOrder"  
-            additionalProperties: false                                 
+                        $ref: "#/components/schemas/BeerOrder"                                 
         BeerOrderLine:
             type: object
             allOf:
