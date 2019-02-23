@@ -368,6 +368,7 @@ components:
             properties:
                 content:
                     type: array
+                    nullable: true
                     items:
                         $ref: "#/components/schemas/Beer"              
         BeerOrder:
