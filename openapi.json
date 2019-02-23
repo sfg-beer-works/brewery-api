@@ -620,8 +620,7 @@
               "$ref": "#/components/schemas/BeerOrder"
             }
           }
-        },
-        "additionalProperties": false
+        }
       },
       "BeerOrderLine": {
         "type": "object",
