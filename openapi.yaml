@@ -12,8 +12,8 @@ servers:
   - url: 'http://localhost:8080'
     description: Local Host
 tags:
-  - name: BeerDto
-    description: BeerDto Operations
+  - name: Beer
+    description: Beer Operations
   - name: Customer
     description: Customer Operations
   - name: Order
@@ -42,9 +42,9 @@ paths:
     parameters:
       - $ref: '#/components/parameters/BeerId'
     get:
-      description: Get BeerDto by Id
+      description: Get Beer by Id
       tags:
-        - BeerDto
+        - Beer
       responses:
         '200':
           description: List Beers Response
@@ -250,7 +250,7 @@ components:
     BeerId:
       name: beerId
       in: path
-      description: BeerDto Id
+      description: Beer Id
       required: true
       schema:
         type: string
@@ -353,6 +353,7 @@ components:
       properties:
         content:
           type: array
+          nullable: true
           items:
             $ref: '#/components/schemas/Beer'
     BeerOrder:
@@ -457,18 +458,55 @@ components:
     PagedResponse:
       type: object
       properties:
+        pageable:
+          type: object
+          properties:
+            sort:
+              type: object
+              properties:
+                sorted:
+                  type: boolean
+                unsorted:
+                  type: boolean
+            offset:
+              type: integer
+              format: int32
+            pageNumber:
+              type: integer
+              format: int32
+            pageSize:
+              type: integer
+              format: int32
+            paged:
+              type: boolean
+            unpaged:
+              type: boolean
+        totalPages:
+          type: integer
+          format: int32
+        last:
+          type: boolean
+        totalElements:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
         number:
           type: integer
           format: int32
         numberOfElements:
           type: integer
           format: int32
-        totalPages:
-          type: integer
-          format: int32
-        size:
-          type: integer
-          format: int32
+        sort:
+          type: object
+          properties:
+            sorted:
+              type: boolean
+            unsorted:
+              type: boolean
+        first:
+          type: boolean
     OrderStatusEnum:
       type: string
       enum:
