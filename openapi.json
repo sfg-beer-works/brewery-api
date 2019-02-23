@@ -512,18 +512,25 @@
           "id": {
             "type": "string",
             "format": "uuid",
-            "readOnly": true
+            "readOnly": true,
+            "nullable": true
           },
           "version": {
-            "type": "integer"
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true
           },
           "createdDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
           },
           "lastModifiedDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
           }
         }
       },
