@@ -384,6 +384,7 @@ components:
                     format: uuid
                 customerRef:
                     type: string
+                    nullable: true
                 beerOrderLines:
                     type: array
                     items:
@@ -527,6 +528,7 @@ components:
                     type: boolean           
         OrderStatusEnum:
             type: string
+            nullable: true
             enum:
                 - NEW
                 - READY
