@@ -542,7 +542,8 @@
           "beerName",
           "beerStyle",
           "quantityOnHand",
-          "price"
+          "price",
+          "upc"
         ],
         "properties": {
           "beerName": {

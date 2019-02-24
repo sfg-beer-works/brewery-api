@@ -337,6 +337,7 @@ components:
         - beerStyle
         - quantityOnHand
         - price
+        - upc
       properties:
         beerName:
           type: string
