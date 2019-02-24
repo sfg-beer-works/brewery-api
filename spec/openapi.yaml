@@ -357,6 +357,8 @@ components:
                     type: string
                 beerStyle:
                     $ref: '#/components/schemas/BeerStyleEnum'
+                upc:
+                    type: integer    
                 quantityOnHand:
                     type: integer
                 price:
