@@ -26,10 +26,10 @@ servers:
     -   url: http://localhost:8080
         description: Local Host
 tags:
-    -   name: Beer
-        description: Beer Operations
-    -   name: Customer
-        description: Customer Operations
+    -   name: Beer Service
+        description: Brewey Beer Operations
+    -   name: Order Service
+        description: Brewery Order Operations
     -   name: Order
         description: Order Operations
 paths:
@@ -37,7 +37,7 @@ paths:
         get:
             description: List Beers
             tags:
-                - Beer
+                - Beer Service
             parameters:
                 - $ref: '#/components/parameters/Page'  
                 - $ref: '#/components/parameters/PageSize'    
@@ -50,13 +50,33 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/BeerPagedList'
+        post:
+            description: Create New Beer
+            tags:
+                - Beer Service
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:  
+                            $ref: '#/components/schemas/Beer'    
+            responses:
+                '201':
+                    description: Create new beer response
+                    headers:
+                        Location:
+                            description: Reference to created beer
+                            schema:
+                                type: string
+                                format: uri 
+
     /api/v1/beer/{beerId}:
         parameters:
             -   $ref: "#/components/parameters/BeerId"
         get:
             description: Get Beer by Id
             tags:
-                - Beer
+                - Beer Service
             responses:
                 '200':
                     description: List Beers Response
@@ -66,11 +86,26 @@ paths:
                                 $ref: '#/components/schemas/Beer'
                 '404':
                     description: Not Found
+        put:
+            description: Update Beer by Id
+            tags:
+                - Beer Service
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Beer'   
+            responses:
+                '204':
+                    description: Beer Updated
+                '404':
+                    description: Not Found                
     /api/v1/customers:
         post:
             description: Register as new customer
             tags:
-                - Customer
+                - Order Service
             requestBody:
                 required: false
                 content:
@@ -94,7 +129,7 @@ paths:
         get:
             description: Get customer by Id
             tags:
-                - Customer
+                - Order Service
             responses:
                 '200':
                     description: HTTP Okay
@@ -104,78 +139,6 @@ paths:
                                 $ref: "#/components/schemas/Customer"
                 '404':
                     description: Not Found
-    /api/v1/customers/{customerId}/creditcard:
-        parameters:
-            -   $ref: "#/components/parameters/CustomerId"
-        get:
-            description: List Customer's Credit Cards
-            tags:
-                - Customer
-            parameters:
-                - $ref: '#/components/parameters/Page'  
-                - $ref: '#/components/parameters/PageSize'                 
-            responses:
-                '200':
-                    description: List Credit Card Reponse
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    $ref: "#/components/schemas/CreditCardPagedList"
-        post:
-            description: Create New Credit Card
-            tags:
-                - Customer
-            responses:
-                '201':
-                    description: Credit Card Created
-                    content:
-                        application/json:
-                            schema:
-                                $ref: "#/components/schemas/CreditCard"
-                    headers:
-                        Location:
-                            description: Reference to created credit card
-                            schema:
-                                type: string
-                                format: uri        
-                '400':
-                    description: Bad Request
-    /api/v1/customers/{customerId}/creditcard/{creditCardId}:
-        parameters:
-            -   $ref: "#/components/parameters/CustomerId"
-            -   $ref: "#/components/parameters/CreditCardId"
-        put:
-            description: Create Credit Card
-            tags:
-                - Customer
-            responses:
-                '201':
-                    description: Credit Card Created
-                    content:
-                        application/json:
-                            schema:
-                                $ref: "#/components/schemas/CreditCard"
-                '400':
-                    description: Bad Request
-                '404':
-                    description: Customer id or credit card id not found
-        delete:
-            description: Delete Credit Card
-            tags:
-                - Customer    
-            responses:
-                '200':
-                    description: Credit Card Updated
-                    content:
-                        application/json:
-                            schema:
-                                $ref: "#/components/schemas/CreditCard"
-                '400':
-                    description: Bad Request
-                '404':
-                    description: Customer id or credit card id not found
     /api/v1/customers/{customerId}/orders:
         parameters:
             -   $ref: "#/components/parameters/CustomerId"
@@ -184,7 +147,7 @@ paths:
         get:
             description: List Orders
             tags:
-                - Order
+                - Order Service
             responses:
                 '200':
                     description: List Order Reponse
@@ -195,7 +158,7 @@ paths:
         post:
             description: Place Order
             tags:
-                - Order
+                - Order Service
             requestBody:
                 required: false
                 content:
@@ -230,7 +193,7 @@ paths:
         get:
             description: Get Order By Id
             tags:
-                - Order
+                - Order Service
             responses:
                 '200':
                     description: HTTP Okay
@@ -247,7 +210,7 @@ paths:
         put:
             description: Pickup Order
             tags:
-                - Order
+                - Order Service
             responses:
                 '204':
                     description: No Content
@@ -428,38 +391,7 @@ components:
                 - WHEAT
                 - IPA
                 - PALE_ALE
-                - SAISON            
-        CreditCard:
-            type: object
-            allOf:
-                -   $ref: "#/components/schemas/BaseItem"
-            required:
-                - cardNumber
-                - expirationDate
-                - cvv
-                - primary
-            properties:
-                cardNumber:
-                    type: integer
-                expirationDate:
-                    type: string
-                    format: date
-                cvv:
-                    type: integer
-                    maximum: 9999    
-                primary:
-                    type: boolean
-                    default: true
-                    description: Only One card can be set as primary
-        CreditCardPagedList:
-            type: object
-            allOf:
-                - $ref: "#/components/schemas/PagedResponse"  
-            properties:
-                content:
-                    type: array
-                    items:
-                        $ref: "#/components/schemas/CreditCard"                      
+                - SAISON                               
         Customer:
             type: object
             required:
@@ -532,6 +464,8 @@ components:
             nullable: true
             enum:
                 - NEW
+                - VERIFIED
+                - ALLOCATED
                 - READY
                 - PICKED_UP
         OrderStatusUpdate:
@@ -545,8 +479,7 @@ components:
                 customerRef:
                     type: string
                 orderStatus:
-                    $ref: "#/components/schemas/OrderStatusEnum"
-                    
+                    $ref: "#/components/schemas/OrderStatusEnum"      
     requestBodies:
         OrderStatusCallback:
             description: Order Status Update
