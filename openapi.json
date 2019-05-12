@@ -379,16 +379,6 @@
           "$ref": "#/components/schemas/BeerStyleEnum"
         }
       },
-      "CreditCardId": {
-        "name": "creditCardId",
-        "in": "path",
-        "description": "Credit Card Id",
-        "required": true,
-        "schema": {
-          "type": "string",
-          "format": "uuid"
-        }
-      },
       "CustomerId": {
         "name": "customerId",
         "in": "path",
@@ -471,7 +461,6 @@
         "required": [
           "beerName",
           "beerStyle",
-          "quantityOnHand",
           "price",
           "upc"
         ],
@@ -517,6 +506,9 @@
           {
             "$ref": "#/components/schemas/BaseItem"
           }
+        ],
+        "required": [
+          "customerId"
         ],
         "properties": {
           "customerId": {
@@ -565,15 +557,27 @@
             "$ref": "#/components/schemas/BaseItem"
           }
         ],
+        "required": [
+          "upc",
+          "orderQuantity"
+        ],
         "properties": {
           "beerId": {
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "readOnly": true
           },
-          "quantity": {
+          "upc": {
+            "type": "integer"
+          },
+          "orderQuantity": {
             "type": "integer",
             "minimum": 1,
             "maximum": 999
+          },
+          "quantityAllocated": {
+            "type": "integer",
+            "readOnly": true
           }
         }
       },
