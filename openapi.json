@@ -577,7 +577,8 @@
           },
           "quantityAllocated": {
             "type": "integer",
-            "readOnly": true
+            "readOnly": true,
+            "nullable": true
           }
         }
       },

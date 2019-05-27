@@ -365,6 +365,7 @@ components:
         quantityAllocated:
           type: integer
           readOnly: true
+          nullable: true
     BeerStyleEnum:
       type: string
       enum:
