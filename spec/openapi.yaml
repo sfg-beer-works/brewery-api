@@ -379,7 +379,8 @@ components:
                     maximum: 999
                 quantityAllocated:
                     type: integer
-                    readOnly: true    
+                    readOnly: true   
+                    nullable: true 
         BeerStyleEnum:
             type: string
             enum:
