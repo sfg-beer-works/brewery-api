@@ -472,7 +472,7 @@
             "$ref": "#/components/schemas/BeerStyleEnum"
           },
           "upc": {
-            "type": "integer"
+            "type": "string"
           },
           "quantityOnHand": {
             "type": "integer"
