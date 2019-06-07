@@ -568,7 +568,7 @@
             "readOnly": true
           },
           "upc": {
-            "type": "integer"
+            "type": "string"
           },
           "orderQuantity": {
             "type": "integer",
