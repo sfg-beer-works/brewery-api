@@ -240,14 +240,6 @@ components:
             required: false
             schema:
                 $ref: '#/components/schemas/BeerStyleEnum'
-        CreditCardId:
-            name: creditCardId
-            in: path
-            description: Credit Card Id
-            required: true
-            schema:
-                type: string
-                format: uuid
         CustomerId:
             name: customerId
             in: path
@@ -256,7 +248,6 @@ components:
             schema:
                 type: string
                 format: uuid
-
         Page:
             name: pageNumber
             in: query
@@ -313,7 +304,6 @@ components:
             required:
                 - beerName
                 - beerStyle
-                - quantityOnHand
                 - price
                 - upc
             properties:
@@ -342,6 +332,8 @@ components:
             type: object
             allOf:
                 -   $ref: "#/components/schemas/BaseItem"
+            required:
+                - customerId
             properties:
                 customerId:
                     type: string
@@ -371,14 +363,24 @@ components:
             type: object
             allOf:
                 -   $ref: "#/components/schemas/BaseItem"
+            required:
+                - upc
+                - orderQuantity
             properties:
                 beerId:
                     type: string
                     format: uuid
-                quantity:
+                    readOnly: true
+                upc:
+                    type: integer    
+                orderQuantity:
                     type: integer
                     minimum: 1
                     maximum: 999
+                quantityAllocated:
+                    type: integer
+                    readOnly: true   
+                    nullable: true 
         BeerStyleEnum:
             type: string
             enum:
