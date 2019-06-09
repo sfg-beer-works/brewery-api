@@ -243,7 +243,6 @@ components:
       schema:
         type: boolean
         default: false
-        required: false
     Page:
       name: pageNumber
       in: query
