@@ -102,7 +102,23 @@ paths:
                 '204':
                     description: Beer Updated
                 '404':
-                    description: Not Found                
+                    description: Not Found      
+    /api/v1/beerUpc/{upc}:    
+        parameters:
+                - $ref: '#/components/parameters/Upc'   
+        get:
+            description: Get Beer by Id
+            tags:
+                - Beer Service
+            responses:
+                '200':
+                    description: List Beers Response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Beer'
+                '404':
+                    description: Not Found                     
     /api/v1/customers:
         post:
             description: Register as new customer
@@ -283,7 +299,14 @@ components:
             required: true
             schema:
                 type: string
-                format: uuid                      
+                format: uuid         
+        Upc:
+            name: upc
+            in: path
+            description: UPC Code
+            required: true
+            schema:
+                type: string                         
     schemas:
         BaseItem:
             type: object
