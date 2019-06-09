@@ -323,7 +323,7 @@ components:
                 beerStyle:
                     $ref: '#/components/schemas/BeerStyleEnum'
                 upc:
-                    type: integer    
+                    type: string    
                 quantityOnHand:
                     type: integer
                 price:
@@ -383,7 +383,7 @@ components:
                     format: uuid
                     readOnly: true
                 upc:
-                    type: integer    
+                    type: string    
                 orderQuantity:
                     type: integer
                     minimum: 1
