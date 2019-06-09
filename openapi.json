@@ -116,7 +116,7 @@
         ],
         "responses": {
           "200": {
-            "description": "List Beers Response",
+            "description": "Get Beer by id Response",
             "content": {
               "application/json": {
                 "schema": {
@@ -162,13 +162,13 @@
         }
       ],
       "get": {
-        "description": "Get Beer by Id",
+        "description": "Get Beer by UPC Code",
         "tags": [
           "Beer Service"
         ],
         "responses": {
           "200": {
-            "description": "List Beers Response",
+            "description": "Get Beer by UPC Response",
             "content": {
               "application/json": {
                 "schema": {
