@@ -29,6 +29,7 @@ paths:
         - $ref: '#/components/parameters/PageSize'
         - $ref: '#/components/parameters/BeerName'
         - $ref: '#/components/parameters/BeerStyle'
+        - $ref: '#/components/parameters/ShowInventoryOnHand'
       responses:
         '200':
           description: List Beers Response
@@ -58,6 +59,7 @@ paths:
   '/api/v1/beer/{beerId}':
     parameters:
       - $ref: '#/components/parameters/BeerId'
+      - $ref: '#/components/parameters/ShowInventoryOnHand'
     get:
       description: Get Beer by Id
       tags:
@@ -233,6 +235,15 @@ components:
       schema:
         type: string
         format: uuid
+    ShowInventoryOnHand:
+      name: showInventoryOnHand
+      in: query
+      description: Show Inventory On Hand
+      required: false
+      schema:
+        type: boolean
+        default: false
+        required: false
     Page:
       name: pageNumber
       in: query

@@ -51,6 +51,9 @@
           },
           {
             "$ref": "#/components/parameters/BeerStyle"
+          },
+          {
+            "$ref": "#/components/parameters/ShowInventoryOnHand"
           }
         ],
         "responses": {
@@ -101,6 +104,9 @@
       "parameters": [
         {
           "$ref": "#/components/parameters/BeerId"
+        },
+        {
+          "$ref": "#/components/parameters/ShowInventoryOnHand"
         }
       ],
       "get": {
@@ -387,6 +393,17 @@
         "schema": {
           "type": "string",
           "format": "uuid"
+        }
+      },
+      "ShowInventoryOnHand": {
+        "name": "showInventoryOnHand",
+        "in": "query",
+        "description": "Show Inventory On Hand",
+        "required": false,
+        "schema": {
+          "type": "boolean",
+          "default": false,
+          "required": false
         }
       },
       "Page": {
