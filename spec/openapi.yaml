@@ -257,8 +257,7 @@ components:
             required: false
             schema:
                 type: boolean
-                default: false
-                required: false                
+                default: false             
         Page:
             name: pageNumber
             in: query
