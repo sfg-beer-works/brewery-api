@@ -96,6 +96,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -135,6 +138,11 @@
         "tags": [
           "Beer Service"
         ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/BeerId"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
@@ -148,6 +156,30 @@
         "responses": {
           "204": {
             "description": "Beer Updated"
+          },
+          "400": {
+            "description": "Bad Reqeust"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Beer",
+        "description": "Delete Beer by Id",
+        "operationId": "v1DeleteBeer",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/BeerId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Delelted"
           },
           "404": {
             "description": "Not Found"
@@ -213,7 +245,13 @@
             }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Reqeust"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
           }
         }
       }
@@ -242,6 +280,41 @@
           },
           "404": {
             "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "Update Customer by Id",
+        "tags": [
+          "Order Service"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CustomerId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Beer Updated"
+          },
+          "400": {
+            "description": "Bad Reqeust"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
           }
         }
       }
@@ -304,8 +377,14 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Reqeust"
+          },
           "404": {
             "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
           }
         },
         "callbacks": {
@@ -376,8 +455,14 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Reqeust"
+          },
           "404": {
-            "description": "Customer Id or Order Id Not Found"
+            "description": "Not Found"
+          },
+          "409": {
+            "description": "Conflict"
           }
         }
       }

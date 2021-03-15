@@ -56,6 +56,8 @@ paths:
               schema:
                 type: string
                 format: uri
+        '400':
+          description: Bad Request
   '/api/v1/beer/{beerId}':
     parameters:
       - $ref: '#/components/parameters/BeerId'
@@ -77,6 +79,8 @@ paths:
       description: Update Beer by Id
       tags:
         - Beer Service
+      parameters:
+        - $ref: '#/components/parameters/BeerId'
       requestBody:
         required: true
         content:
@@ -86,6 +90,21 @@ paths:
       responses:
         '204':
           description: Beer Updated
+        '400':
+          description: Bad Reqeust
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+    delete:
+      summary: Delete Beer
+      description: Delete Beer by Id
+      operationId: v1DeleteBeer
+      parameters:
+        - $ref: '#/components/parameters/BeerId'
+      responses:
+        '200':
+          description: Delelted
         '404':
           description: Not Found
   '/api/v1/beerUpc/{upc}':
@@ -125,7 +144,11 @@ paths:
                 type: string
                 format: uri
         '400':
-          description: Bad Request
+          description: Bad Reqeust
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
   '/api/v1/customers/{customerId}':
     parameters:
       - $ref: '#/components/parameters/CustomerId'
@@ -142,6 +165,27 @@ paths:
                 $ref: '#/components/schemas/Customer'
         '404':
           description: Not Found
+    put:
+      description: Update Customer by Id
+      tags:
+        - Order Service
+      parameters:
+        - $ref: '#/components/parameters/CustomerId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '204':
+          description: Beer Updated
+        '400':
+          description: Bad Reqeust
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
   '/api/v1/customers/{customerId}/orders':
     parameters:
       - $ref: '#/components/parameters/CustomerId'
@@ -177,8 +221,12 @@ paths:
               schema:
                 type: string
                 format: uri
+        '400':
+          description: Bad Reqeust
         '404':
           description: Not Found
+        '409':
+          description: Conflict
       callbacks:
         orderStatusChange:
           '{$request.body#/orderStatusCallback}':
@@ -217,8 +265,12 @@ paths:
       responses:
         '204':
           description: No Content
+        '400':
+          description: Bad Reqeust
         '404':
-          description: Customer Id or Order Id Not Found
+          description: Not Found
+        '409':
+          description: Conflict
 components:
   parameters:
     BeerId:
