@@ -16,6 +16,10 @@
     {
       "url": "http://localhost:8080",
       "description": "Local Host"
+    },
+    {
+      "url": "http://api.springframework.guru",
+      "description": "Demo API"
     }
   ],
   "tags": [
@@ -26,16 +30,13 @@
     {
       "name": "Order Service",
       "description": "Brewery Order Operations"
-    },
-    {
-      "name": "Order",
-      "description": "Order Operations"
     }
   ],
   "paths": {
     "/api/v1/beer": {
       "get": {
         "description": "List Beers",
+        "operationId": "listBeers",
         "tags": [
           "Beer Service"
         ],
@@ -71,6 +72,7 @@
       },
       "post": {
         "description": "Create New Beer",
+        "operationId": "createBeerV1",
         "tags": [
           "Beer Service"
         ],
@@ -114,6 +116,7 @@
       ],
       "get": {
         "description": "Get Beer by Id",
+        "operationId": "getBeerById",
         "tags": [
           "Beer Service"
         ],
@@ -135,6 +138,7 @@
       },
       "put": {
         "description": "Update Beer by Id",
+        "operationId": "updateBeerByIdV1",
         "tags": [
           "Beer Service"
         ],
@@ -172,6 +176,9 @@
         "summary": "Delete Beer",
         "description": "Delete Beer by Id",
         "operationId": "v1DeleteBeer",
+        "tags": [
+          "Beer Service"
+        ],
         "parameters": [
           {
             "$ref": "#/components/parameters/BeerId"
@@ -195,6 +202,7 @@
       ],
       "get": {
         "description": "Get Beer by UPC Code",
+        "operationId": "getByUPCCode",
         "tags": [
           "Beer Service"
         ],
@@ -218,6 +226,7 @@
     "/api/v1/customers": {
       "post": {
         "description": "Register as new customer",
+        "operationId": "createNewCustomer",
         "tags": [
           "Order Service"
         ],
@@ -264,6 +273,7 @@
       ],
       "get": {
         "description": "Get customer by Id",
+        "operationId": "getByCustomerId",
         "tags": [
           "Order Service"
         ],
@@ -285,6 +295,7 @@
       },
       "put": {
         "description": "Update Customer by Id",
+        "operationId": "UpdateByCustomerId",
         "tags": [
           "Order Service"
         ],
@@ -333,6 +344,7 @@
       ],
       "get": {
         "description": "List Orders",
+        "operationId": "listCustomerOrders",
         "tags": [
           "Order Service"
         ],
@@ -351,6 +363,7 @@
       },
       "post": {
         "description": "Place Order",
+        "operationId": "createOrder",
         "tags": [
           "Order Service"
         ],
@@ -417,6 +430,7 @@
       ],
       "get": {
         "description": "Get Order By Id",
+        "operationId": "getCustomerOrderById",
         "tags": [
           "Order Service"
         ],
@@ -448,6 +462,7 @@
       ],
       "put": {
         "description": "Pickup Order",
+        "operationId": "pickupCustomerOrder",
         "tags": [
           "Order Service"
         ],
