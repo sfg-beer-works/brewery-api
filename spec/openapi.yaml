@@ -25,17 +25,18 @@ info:
 servers:
     -   url: http://localhost:8080
         description: Local Host
+    -   url: http://api.springframework.guru
+        description: Demo API
 tags:
     -   name: Beer Service
         description: Brewey Beer Operations
     -   name: Order Service
         description: Brewery Order Operations
-    -   name: Order
-        description: Order Operations
 paths:
     /api/v1/beer:
         get:
             description: List Beers
+            operationId: listBeers
             tags:
                 - Beer Service
             parameters:
@@ -53,6 +54,7 @@ paths:
                                 $ref: '#/components/schemas/BeerPagedList'
         post:
             description: Create New Beer
+            operationId: createBeerV1
             tags:
                 - Beer Service
             requestBody:
@@ -78,6 +80,7 @@ paths:
             -   $ref: '#/components/parameters/ShowInventoryOnHand'
         get:
             description: Get Beer by Id
+            operationId: getBeerById
             tags:
                 - Beer Service
             responses:
@@ -91,6 +94,7 @@ paths:
                     description: Not Found
         put:
             description: Update Beer by Id
+            operationId: updateBeerByIdV1
             tags:
                 - Beer Service
             parameters:
@@ -114,6 +118,8 @@ paths:
           summary: Delete Beer
           description: Delete Beer by Id
           operationId: v1DeleteBeer
+          tags:
+              - Beer Service
           parameters:
             - $ref: "#/components/parameters/BeerId"
           responses:
@@ -126,6 +132,7 @@ paths:
                 - $ref: '#/components/parameters/Upc'   
         get:
             description: Get Beer by UPC Code
+            operationId: getByUPCCode
             tags:
                 - Beer Service
             responses:
@@ -140,6 +147,7 @@ paths:
     /api/v1/customers:
         post:
             description: Register as new customer
+            operationId: createNewCustomer
             tags:
                 - Order Service
             requestBody:
@@ -168,6 +176,7 @@ paths:
             -   $ref: "#/components/parameters/CustomerId"
         get:
             description: Get customer by Id
+            operationId: getByCustomerId
             tags:
                 - Order Service
             responses:
@@ -181,6 +190,7 @@ paths:
                     description: Not Found
         put:
             description: Update Customer by Id
+            operationId: UpdateByCustomerId
             tags:
                 - Order Service
             parameters:
@@ -207,6 +217,7 @@ paths:
             -   $ref: '#/components/parameters/PageSize'
         get:
             description: List Orders
+            operationId: listCustomerOrders
             tags:
                 - Order Service
             responses:
@@ -218,6 +229,7 @@ paths:
                                 $ref: "#/components/schemas/BeerOrderPagedList"
         post:
             description: Place Order
+            operationId: createOrder
             tags:
                 - Order Service
             requestBody:
@@ -257,6 +269,7 @@ paths:
             -   $ref: "#/components/parameters/OrderId"
         get:
             description: Get Order By Id
+            operationId: getCustomerOrderById
             tags:
                 - Order Service
             responses:
@@ -274,6 +287,7 @@ paths:
             -   $ref: "#/components/parameters/OrderId"
         put:
             description: Pickup Order
+            operationId: pickupCustomerOrder
             tags:
                 - Order Service
             responses:
