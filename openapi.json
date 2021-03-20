@@ -189,7 +189,7 @@
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Delelted"
           },
           "404": {
