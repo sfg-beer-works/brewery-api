@@ -127,7 +127,7 @@ paths:
             parameters:
                 -   $ref: "#/components/parameters/BeerId"
             responses:
-                '200':
+                '204':
                     description: Delelted
                 '404':
                     description: Not Found
